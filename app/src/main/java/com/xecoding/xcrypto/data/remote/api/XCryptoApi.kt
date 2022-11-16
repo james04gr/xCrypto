@@ -14,7 +14,7 @@ interface XCryptoApi {
     @GET("/v1/coins/{coinId}")
     suspend fun getCoinInfo(@Path("coinId") coinId: String): CoinInfoDto
 
-    @GET("/v1/person/{personId}")
+    @GET("/v1/people/{personId}")
     suspend fun getPersonInfo(@Path("personId") personId: String): PersonInfoDto
 
 }

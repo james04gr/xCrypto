@@ -16,10 +16,13 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.google.accompanist.flowlayout.FlowRow
+import com.xecoding.xcrypto.presentation.Screen
 
 @Composable
 fun CoinInfoScreen(
+    navController: NavController,
     viewModel: CoinInfoViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
@@ -78,7 +81,10 @@ fun CoinInfoScreen(
                 }
                 items(coin.team) { teamMember ->
                     TeamListItem(
-                        member = teamMember
+                        member = teamMember,
+                        onItemClicked = {
+                            navController.navigate(Screen.PersonInfoScreen.route + "/$it")
+                        }
                     )
                     Divider()
                 }
